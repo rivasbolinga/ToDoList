@@ -6,7 +6,7 @@ const tasks = [
   {
     description: 'Clean house',
     completed: true,
-    index: 0,
+    index: 3,
   },
   {
     description: 'Homework',
@@ -16,11 +16,12 @@ const tasks = [
   {
     description: 'Shopping',
     completed: true,
-    index: 2,
+    index: 0,
   },
 ];
 const displayTasks = function () {
-  for (let i = 0; i < tasks.length; i += 1) {
+  const arrsorted= tasks.sort((a, b) => a.index - b.index)
+  for (let i = 0; i < arrsorted.length; i += 1) {
     const html = `
     <div class="task-wrapper">
     <form class="completed-form">
