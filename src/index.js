@@ -1,6 +1,5 @@
 import './style.css';
 
-
 const listContainer = document.querySelector('.todo-list');
 
 const tasks = [
