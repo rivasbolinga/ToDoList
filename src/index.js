@@ -20,7 +20,7 @@ const tasks = [
   },
 ];
 const displayTasks = function () {
-  const arrsorted= tasks.sort((a, b) => a.index - b.index)
+  const arrsorted = tasks.sort((a, b) => a.index - b.index);
   for (let i = 0; i < arrsorted.length; i += 1) {
     const html = `
     <div class="task-wrapper">
