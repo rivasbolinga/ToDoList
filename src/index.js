@@ -1,18 +1,39 @@
-
 import './style.css';
-import printMe from './print.js';
 
-function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
 
-  element.appendChild(btn);
+const listContainer = document.querySelector('.todo-list');
 
-  return element;
-}
+const tasks = [
+  {
+    description: 'Clean house',
+    completed: true,
+    index: 0,
+  },
+  {
+    description: 'Homework',
+    completed: false,
+    index: 1,
+  },
+  {
+    description: 'Shopping',
+    completed: true,
+    index: 2,
+  },
+];
+const displayTasks = function () {
+  for (let i = 0; i < tasks.length; i += 1) {
+    const html = `
+    <div class="task-wrapper">
+    <form class="completed-form">
+      <input
+      class="checkbox"
+      type="checkbox"
+      >
+    </form>
+    <p class="task-text"> ${tasks[i].description}</p>
+  </div>`;
+    listContainer.innerHTML += html;
+  }
+};
 
-document.body.appendChild(component());
+document.addEventListener('DOMContentLoaded', displayTasks);
