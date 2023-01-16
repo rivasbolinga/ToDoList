@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="../img/src—Pngtree—to do list icon cartoon_5080528.png" width=400px>
+<img src="/src/img/—Pngtree—to do list icon cartoon_5080528.png" width=400px>
 </div>
 
 <div align="center">
