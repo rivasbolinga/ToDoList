@@ -4,7 +4,7 @@ const listContainer = document.querySelector('.todo-list');
 const todoInput = document.querySelector('.todo-input');
 const form = document.querySelector('.todo-form');
 let tasks;
-//Create array from LS
+// Create array from LS
 if (localStorage.getItem('tasks') === null) {
   tasks = [];
 } else {
@@ -71,7 +71,7 @@ const updateLs = function (newInput, id) {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 /// EVENTS
-//--Event to submit the new task
+// --Event to submit the new task
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   // take input value
@@ -104,5 +104,5 @@ const clickHandle = function (e) {
     e.target.parentElement.parentElement.remove();
   }
 };
-//--Event to handle UI in task
+// --Event to handle UI in task
 listContainer.addEventListener('click', clickHandle);
