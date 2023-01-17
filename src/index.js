@@ -23,6 +23,7 @@ const displayTasks = function (storage) {
          class="checkbox"
          type="checkbox">
         <input 
+        id=${storage.index}
          type= "text"
          class="task-text"
          changetask
@@ -32,24 +33,24 @@ const displayTasks = function (storage) {
      </div>
      <div class="icons-task">
      <i class="fa-solid fa-ellipsis-vertical"></i>
-     <i class="fa-solid fa-trash-can"></i>
+     <i id="${storage.index}" class="fa-solid fa-trash-can"></i>
      </div>
     
     </div>`;
     listContainer.innerHTML += html;
   };
 
-// document.addEventListener('DOMContentLoaded', displayTasks);
 
 const form = document.querySelector('.todo-form');
 
 form.addEventListener('submit', (e)=>{
   e.preventDefault();
+  //take input value
   const newTaskInput = todoInput.value;
+  //
   addTaskToStorage(tasks, newTaskInput);
-  const storage = JSON.parse(localStorage.getItem('task'));
-  //display task 
-  
+   JSON.parse(localStorage.getItem('task'));
+ 
   //clean input 
   todoInput.value = "";
   
@@ -68,53 +69,52 @@ const addTaskToStorage = function(arr,newTaskInput) {
   } else {
     index = arr[len -1].index+1;
   }
-  //create objext
+  //create objext and push it to array and Ls
   const newTask = {description:newTaskInput, status:false, index};
   tasks.push(newTask);
   localStorage.setItem('tasks', JSON.stringify(tasks));
   displayTasks(newTask);
 }
 //--Remove task from Local Storage
-const removeItem = function (id) {
-  let arr = JSON.parse(localStorage.getItem('tasks'));
-  arr = arr.filter((e) => e.index.toString() !== id.toString());
-  for (let i = 0; i < arr.length; i += 1) {
-    arr[i].index = i + 1;
+const removeItemfromLs = function (id) {
+  let tasks = JSON.parse(localStorage.getItem('tasks'));
+  tasks = tasks.filter((e) => e.index.toString() !== id.toString());
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i + 1;
   }
-  localStorage.setItem('tasks', JSON.stringify(arr));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-//ForEach
-listContainer.addEventListener('click', (e)=>{
-if(e.target.classList.contains('task-wrapper')){
-  const taskTargeted = e.target;
-  taskTargeted.classList.add('modify');
-  taskTargeted.querySelector('.fa-ellipsis-vertical').style.display = 'none';
-  taskTargeted.querySelector('.fa-trash-can').style.display = 'flex';
-  const modifyTask = taskTargeted.querySelector('.task-text');
-  modifyTask.readOnly = false;
-  modifyTaskF(modifyTask)
-} else if(e.target.classList.contains('fa-trash-can')) {
-  const { id } = e.target;
-  removeItem(id)
-  // tasks = tasks.filter((e) => JSON.stringify(e.id) !== id);
-  // localStorage.setItem('task', JSON.stringify(tasks));
-  e.target.parentElement.parentElement.remove();
-
-}
-})
-  
-// const updateStorage = function(value) {
-//   const arr = JSON.parse(localStorage.getItem('tasks'));
-//   arr[id - 1].description = value.trim();
-//   localStorage.setItem('todos', JSON.stringify(arr));
-// }
-
- const modifyTaskF = function(input) {
-
-  const newInput = input;
-  input.addEventListener('submit',(e)=> {
-    e.preventDefault()
-    updateItem()
+const updateLs = function(newInput, id){
+  let tasks = JSON.parse(localStorage.getItem('tasks'));
+  tasks[id - 1].description = newInput.trim();
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+ }
+ const getnewInput = function (input, tasks, id){
+  const newInput = input.value; 
+  input.addEventListener('keyup', () => {
+    updateLs(newInput.value, id)
   })
  }
+
+listContainer.addEventListener('click', (e)=>{
+if(e.target.classList.contains('task-text')){
+ 
+  const taskTargeted = e.target.parentElement.parentElement.parentElement;
+  taskTargeted.querySelector('.fa-ellipsis-vertical').style.display = 'none';
+  taskTargeted.querySelector('.fa-trash-can').style.display = 'flex';
+  
+  e.target.readOnly = false;
+  const { id } = e.target;
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+  getnewInput(e.target, tasks, id);
+
+} else if (e.target.classList.contains('fa-trash-can')) {
+  const { id } = e.target;
+  removeItemfromLs(id)
+  e.target.parentElement.parentElement.remove();
+  
+}
+ });
+
+
