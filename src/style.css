@@ -38,11 +38,10 @@ body {
   border-bottom: 0.8px solid rgba(183, 183, 183, 0.702);
   height: 40px;
   align-items: center;
-  
 }
 
 .task-wrapper:hover {
-  cursor:text;
+  cursor: text;
 }
 
 .btn-clear {
@@ -65,13 +64,11 @@ body {
   background-color: rgba(241, 241, 122, 0.702);
 }
 
-
 .task-text {
   background: none;
   border: none;
   width: 380px;
   height: 30px;
- 
 }
 
 .fa-trash-can {
