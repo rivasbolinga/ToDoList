@@ -1,3 +1,4 @@
+import { update } from 'lodash';
 import './style.css';
 
 const listContainer = document.querySelector('.todo-list');
@@ -56,6 +57,8 @@ form.addEventListener('submit', (e)=>{
 
 
 ///LOCAL STORAGE
+
+//--Add tasks to Local Storage
 const addTaskToStorage = function(arr,newTaskInput) {
   //create index
   let index;
@@ -68,29 +71,50 @@ const addTaskToStorage = function(arr,newTaskInput) {
   //create objext
   const newTask = {description:newTaskInput, status:false, index};
   tasks.push(newTask);
-  localStorage.setItem('task', JSON.stringify(tasks));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
   displayTasks(newTask);
 }
+//--Remove task from Local Storage
+const removeItem = function (id) {
+  let arr = JSON.parse(localStorage.getItem('tasks'));
+  arr = arr.filter((e) => e.index.toString() !== id.toString());
+  for (let i = 0; i < arr.length; i += 1) {
+    arr[i].index = i + 1;
+  }
+  localStorage.setItem('tasks', JSON.stringify(arr));
+}
 
+//ForEach
 listContainer.addEventListener('click', (e)=>{
-  
+if(e.target.classList.contains('task-wrapper')){
   const taskTargeted = e.target;
   taskTargeted.classList.add('modify');
   taskTargeted.querySelector('.fa-ellipsis-vertical').style.display = 'none';
   taskTargeted.querySelector('.fa-trash-can').style.display = 'flex';
-  if (e.target.tagName === 'INPUT') {
-    e.target.readOnly = false;
-  }
-  
-  // if(e.target.closest('task-text')){
-  //   console.log('task text')
-  //   taskText.readOnly = false;
-  // }
-  //change task
-//   if(e.target.classList.contains('fa-ellipsis-vertical')) {
-//     
-//     e.target.readOnly = false;
-//  }
-  //not dots
-  // yes bin
+  const modifyTask = taskTargeted.querySelector('.task-text');
+  modifyTask.readOnly = false;
+  modifyTaskF(modifyTask)
+} else if(e.target.classList.contains('fa-trash-can')) {
+  const { id } = e.target;
+  removeItem(id)
+  // tasks = tasks.filter((e) => JSON.stringify(e.id) !== id);
+  // localStorage.setItem('task', JSON.stringify(tasks));
+  e.target.parentElement.parentElement.remove();
+
+}
 })
+  
+// const updateStorage = function(value) {
+//   const arr = JSON.parse(localStorage.getItem('tasks'));
+//   arr[id - 1].description = value.trim();
+//   localStorage.setItem('todos', JSON.stringify(arr));
+// }
+
+ const modifyTaskF = function(input) {
+
+  const newInput = input;
+  input.addEventListener('submit',(e)=> {
+    e.preventDefault()
+    updateItem()
+  })
+ }

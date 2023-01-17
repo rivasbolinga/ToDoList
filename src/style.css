@@ -70,12 +70,13 @@ body {
 .task-text {
   background: none;
   border: none;
+ 
 }
 
 .fa-trash-can {
   display: none;
 }
 
-.icons-tasks {
+.icons-task {
   cursor: pointer;
 }
