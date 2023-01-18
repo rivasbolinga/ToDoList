@@ -36,9 +36,12 @@ body {
   display: flex;
   flex-direction: row;
   border-bottom: 0.8px solid rgba(183, 183, 183, 0.702);
-  gap: 10px;
-  padding-left: 10px;
+  height: 40px;
   align-items: center;
+}
+
+.task-wrapper:hover {
+  cursor: text;
 }
 
 .btn-clear {
@@ -46,5 +49,32 @@ body {
   color: rgb(152, 152, 152);
   padding: 15px;
   background-color: rgba(235, 234, 234, 0.558);
+  cursor: pointer;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-left: 10px;
+  align-items: center;
+}
+
+.modify {
+  background-color: rgba(241, 241, 122, 0.702);
+}
+
+.task-text {
+  background: none;
+  border: none;
+  width: 380px;
+  height: 30px;
+}
+
+.fa-trash-can {
+  display: none;
+}
+
+.icons-task {
   cursor: pointer;
 }

@@ -56,9 +56,11 @@
 <!-- > Describe between 1-3 key features of the application.-->
 
 - **Use ob webpack and ES6 sintax**
-- **Tasks stored in an array of objects**
-- **Tasks render dinamiccally**
+- **Add new task**
+- **Remove new task**
+- **Change task description**
 - **Minimalist design**
+- **Tasks saved in Local Storage**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- LIVE DEMO -->
@@ -155,10 +157,9 @@ npx eslint .
 ## 🔭 Future Features <a name="future-features"></a>
 
 
-- [ ] **[Functionality to add a new task]**
-- [ ] **[Functionality to remove the task]**
-- [ ] **[Functionality to clear all the completed task ]**
-- [ ] **[Saved in local storage]**
+- [ ] **[Functionality to the checkbox for completed tasks]**
+- [ ] **[Functionality to remove all completed tasks]**
+- [ ] **[Better design]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
