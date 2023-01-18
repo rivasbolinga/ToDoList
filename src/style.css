@@ -8,21 +8,28 @@ body {
 .todo-container {
   display: flex;
   flex-direction: column;
-  margin: 100px 0 0 50px;
-  width: 450px;
+  margin: 20px 0 0 50px;
+  width: 250px;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.828);
   box-shadow: 1px 1px 5px rgba(108, 108, 108, 0.682);
 }
 
 .title-list {
-  padding: 10px;
-  color: rgb(67, 67, 67);
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   border-bottom: 0.8px solid rgba(183, 183, 183, 0.702);
 }
 
+.title-text {
+  font-size: 20px;
+  color: rgb(67, 67, 67);
+}
+
 .todo-input {
-  width: 430px;
+  width: 225px;
   padding: 10px;
   border: none;
   border-bottom: 0.8px solid rgba(183, 183, 183, 0.702);
@@ -67,8 +74,7 @@ body {
 .task-text {
   background: none;
   border: none;
-  width: 380px;
-  height: 30px;
+  width: 170px;
 }
 
 .fa-trash-can {
@@ -77,4 +83,28 @@ body {
 
 .icons-task {
   cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.error-message {
+  padding-left: 20px;
+  color: rgb(186, 8, 8);
+}
+
+@media only screen and (min-width: 768px) {
+  .todo-container {
+    width: 550px;
+  }
+
+  .todo-input {
+    width: 530px;
+  }
+
+  .task-text {
+    width: 480px;
+    height: 50px;
+  }
 }
