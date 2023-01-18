@@ -1,8 +1,11 @@
 import './style.css';
+// import checkboxPressed from './modules/ckbx.js';
 // Declare Global Variables
 const listContainer = document.querySelector('.todo-list');
 const todoInput = document.querySelector('.todo-input');
 const form = document.querySelector('.todo-form');
+
+
 let tasks;
 // Create array from LS
 if (localStorage.getItem('tasks') === null) {
@@ -91,6 +94,17 @@ const getnewInput = function (input, id) {
   });
 };
 
+
+
+
+// const checkboxPressed = function(id) {
+//   //task underlined
+//   console.log(id)
+//   }
+
+
+
+
 const clickHandle = function (e) {
   if (e.target.classList.contains('task-text')) {
     const taskTargeted = e.target.parentElement.parentElement.parentElement;
@@ -104,6 +118,14 @@ const clickHandle = function (e) {
     const { id } = e.target;
     removeItemfromLs(id);
     e.target.parentElement.parentElement.remove();
+  } else if(e.target.classList.contains('checkbox')){
+    const checkbox = e.target;
+    const sibling = checkbox.closest('.task-wrapper').querySelector('.task-text')
+    if(checkbox.checked) {
+      sibling.classList.add('checked')
+    } else {
+      sibling.classList.remove('checked')
+    }
   }
 };
 // --Event to handle UI in task

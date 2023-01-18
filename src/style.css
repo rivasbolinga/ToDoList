@@ -78,3 +78,8 @@ body {
 .icons-task {
   cursor: pointer;
 }
+
+.checked {
+  text-decoration:line-through
+
+}
