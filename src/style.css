@@ -79,11 +79,10 @@ body {
 }
 
 .completed {
-  text-decoration:line-through
-
+  text-decoration: line-through;
 }
 
-@media only screen and (min-width:768px){
+@media only screen and (min-width: 768px) {
   .todo-container {
     width: 550px;
   }
