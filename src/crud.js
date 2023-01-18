@@ -22,6 +22,7 @@ const displayTasks = function () {
        <div class="description-container">
         <form class="completed-form">
           <input
+          id=${el.index}
            class="checkbox"
            type="checkbox">
           <input 
@@ -74,6 +75,12 @@ const updateLs = function (newInput, id) {
   tasks[id - 1].description = newInput.trim();
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
+// --Update Status Local Storage when checked
+const updateStatus = function(checkbox, id) {
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+  tasks[id].status = checkbox.checked;
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 /// EVENTS
 // --Event to submit the new task
 form.addEventListener('submit', (e) => {
@@ -96,15 +103,6 @@ const getnewInput = function (input, id) {
 
 
 
-
-// const checkboxPressed = function(id) {
-//   //task underlined
-//   console.log(id)
-//   }
-
-
-
-
 const clickHandle = function (e) {
   if (e.target.classList.contains('task-text')) {
     const taskTargeted = e.target.parentElement.parentElement.parentElement;
@@ -119,12 +117,15 @@ const clickHandle = function (e) {
     removeItemfromLs(id);
     e.target.parentElement.parentElement.remove();
   } else if(e.target.classList.contains('checkbox')){
+    const id  = e.target.id;
     const checkbox = e.target;
     const sibling = checkbox.closest('.task-wrapper').querySelector('.task-text')
     if(checkbox.checked) {
-      sibling.classList.add('checked')
+      sibling.classList.add('checked');
+      updateStatus(checkbox, id);
     } else {
-      sibling.classList.remove('checked')
+      sibling.classList.remove('checked');
+      updateStatus(checkbox, id);
     }
   }
 };
