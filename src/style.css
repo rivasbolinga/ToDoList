@@ -8,7 +8,7 @@ body {
 .todo-container {
   display: flex;
   flex-direction: column;
-  margin: 100px 0 0 50px;
+  margin: 20px 0 0 50px;
   width: 250px;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.828);
@@ -16,9 +16,16 @@ body {
 }
 
 .title-list {
-  padding: 10px;
-  color: rgb(67, 67, 67);
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   border-bottom: 0.8px solid rgba(183, 183, 183, 0.702);
+}
+
+.title-text {
+  font-size: 20px;
+  color: rgb(67, 67, 67);
 }
 
 .todo-input {
@@ -80,6 +87,23 @@ body {
 
 .completed {
   text-decoration: line-through;
+}
+
+.error-message {
+  padding-left: 20px;
+  color: rgb(186, 8, 8);
+}
+
+.success-msg {
+  display: none;
+  background-color: rgba(88, 226, 141, 0.625);
+  max-width: 200px;
+  text-align: center;
+  font-size: 15px;
+  padding: 15px;
+  margin-top: 100px;
+  margin-bottom: 0;
+  margin-left: 50px;
 }
 
 @media only screen and (min-width: 768px) {

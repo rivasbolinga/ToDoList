@@ -13,6 +13,8 @@ const listContainer = document.querySelector('.todo-list');
 const todoInput = document.querySelector('.todo-input');
 const form = document.querySelector('.todo-form');
 const btnClear = document.querySelector('.btn-clear');
+const errorMsg = document.querySelector('.error-message');
+const successMsg = document.querySelector('.success-msg');
 // -- Define local storage --
 let tasks;
 if (localStorage.getItem('tasks') === null) {
@@ -73,9 +75,16 @@ const addTaskToStorage = function (arr, newTaskInput) {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const newTaskInput = todoInput.value;
-  addTaskToStorage(tasks, newTaskInput);
-  todoInput.value = '';
-  displayTasks();
+  if (newTaskInput === '' || newTaskInput === null) {
+    errorMsg.textContent = '**Start the day writing a task to do';
+    setTimeout(() => errorMsg.remove(), 2000);
+  } else {
+    addTaskToStorage(tasks, newTaskInput);
+    todoInput.value = '';
+    displayTasks();
+    successMsg.style.display = 'block';
+    setTimeout(() => successMsg.remove(), 2000);
+  }
 });
 // -- Get new input from change tasks description --
 const getnewInput = function (input, id) {
