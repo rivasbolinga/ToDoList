@@ -4,6 +4,7 @@ import './style.css';
 const listContainer = document.querySelector('.todo-list');
 const todoInput = document.querySelector('.todo-input');
 const form = document.querySelector('.todo-form');
+const btnClear = document.querySelector('.btn-clear');
 
 
 let tasks;
@@ -22,11 +23,11 @@ const displayTasks = function () {
        <div class="description-container">
         <form class="completed-form">
           <input
-          id=${el.index}
+          id="${el.index}"
            class="checkbox"
            type="checkbox">
           <input 
-          id=${el.index}
+          id="${el.index}"
            type= "text"
            class="task-text"
            changetask
@@ -63,7 +64,7 @@ const addTaskToStorage = function (arr, newTaskInput) {
 // --Remove task from Local Storage
 const removeItemfromLs = function (id) {
   let tasks = JSON.parse(localStorage.getItem('tasks'));
-  tasks = tasks.filter((e) => e.index.toString() !== id.toString());
+  tasks = tasks.filter((e) => e.index.toString() !== id.toString());//array all elements where the index is not = id.targeted
   for (let i = 0; i < tasks.length; i += 1) {
     tasks[i].index = i + 1;
   }
@@ -72,13 +73,36 @@ const removeItemfromLs = function (id) {
 // --Update Local Storage when mdoify task
 const updateLs = function (newInput, id) {
   const tasks = JSON.parse(localStorage.getItem('tasks'));
-  tasks[id - 1].description = newInput.trim();
+  for(let i= 0; i < tasks.length; i+=1 ){
+    if (tasks[i].index == id.toString()) {
+      tasks[i].description = newInput;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 // --Update Status Local Storage when checked
-const updateStatus = function(checkbox, id) {
+const updateStatus = function(id) {
   const tasks = JSON.parse(localStorage.getItem('tasks'));
-  tasks[id].status = checkbox.checked;
+  for(let i= 0; i < tasks.length; i+=1 ){
+    if (tasks[i].index == id.toString()) {
+    if(tasks[i].status === false) {
+      tasks[i].status = true;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    } else {
+      tasks[i].status = false;
+    }
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+}
+}
+
+const clearfromLS = function () {
+  let tasks = JSON.parse(localStorage.getItem('tasks'));
+  tasks = tasks.filter((e) => e.status == false);
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i + 1;
+  }
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 /// EVENTS
@@ -108,7 +132,6 @@ const clickHandle = function (e) {
     const taskTargeted = e.target.parentElement.parentElement.parentElement;
     taskTargeted.querySelector('.fa-ellipsis-vertical').style.display = 'none';
     taskTargeted.querySelector('.fa-trash-can').style.display = 'flex';
-
     e.target.readOnly = false;
     const { id } = e.target;
     getnewInput(e.target, id);
@@ -117,18 +140,31 @@ const clickHandle = function (e) {
     removeItemfromLs(id);
     e.target.parentElement.parentElement.remove();
   } else if(e.target.classList.contains('checkbox')){
-    const id  = e.target.id;
+    
+    const {id} = e.target;
+  
     const checkbox = e.target;
     const sibling = checkbox.closest('.task-wrapper').querySelector('.task-text')
     if(checkbox.checked) {
-      sibling.classList.add('checked');
-      updateStatus(checkbox, id);
+      sibling.classList.add('completed');
+      updateStatus(id);
     } else {
-      sibling.classList.remove('checked');
-      updateStatus(checkbox, id);
+      sibling.classList.remove('completed');
+      updateStatus(id);
     }
   }
 };
 // --Event to handle UI in task
 listContainer.addEventListener('click', clickHandle);
 window.addEventListener('load', displayTasks);
+
+btnClear.addEventListener('click', (e)=> {
+  clearfromLS()
+  const button = e.target;
+  const sibling = button.closest('.todo-container').querySelectorAll('.task-text');
+  sibling.forEach(e => {
+    if(e.classList.contains('completed')){
+      e.parentElement.parentElement.parentElement.remove()
+    }
+  })
+})

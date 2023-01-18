@@ -9,7 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 100px 0 0 50px;
-  width: 450px;
+  width: 250px;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.828);
   box-shadow: 1px 1px 5px rgba(108, 108, 108, 0.682);
@@ -22,7 +22,7 @@ body {
 }
 
 .todo-input {
-  width: 430px;
+  width: 225px;
   padding: 10px;
   border: none;
   border-bottom: 0.8px solid rgba(183, 183, 183, 0.702);
@@ -67,8 +67,7 @@ body {
 .task-text {
   background: none;
   border: none;
-  width: 380px;
-  height: 30px;
+  width: 170px;
 }
 
 .fa-trash-can {
@@ -79,7 +78,22 @@ body {
   cursor: pointer;
 }
 
-.checked {
+.completed {
   text-decoration:line-through
 
+}
+
+@media only screen and (min-width:768px){
+  .todo-container {
+    width: 550px;
+  }
+
+  .todo-input {
+    width: 530px;
+  }
+
+  .task-text {
+    width: 480px;
+    height: 50px;
+  }
 }
