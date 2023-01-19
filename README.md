@@ -70,7 +70,7 @@
 
 For a live demo to our project, follow the link below
 
-- Not available at the moment, coming soon.
+https://rivasbolinga.github.io/ToDoList/dist/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -135,7 +135,7 @@ npx eslint .
 
 ### Deployment
 
-- It is not available at the moment.
+- GH pages
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
