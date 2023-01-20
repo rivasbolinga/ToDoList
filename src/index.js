@@ -56,11 +56,11 @@ const displayTasks = function () {
 const addTaskToStorage = function (arr, newTaskInput) {
   // create index
   let index;
-  const len = arr.length;
+  const len = tasks.length;
   if (len === 0 || len === null) {
     index = 0;
   } else {
-    index = arr[len - 1].index + 1;
+    index = tasks[len - 1].index + 1;
   }
   // create object and push it to array and LS
   const newTask = { description: newTaskInput, status: false, index };
