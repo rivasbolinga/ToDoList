@@ -67,9 +67,9 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-For a live demo to our project, follow the link below
+Live Demo📍 [here](https://rivasbolinga.github.io/ToDoList/dist/)
 
-https://rivasbolinga.github.io/ToDoList/dist/
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
