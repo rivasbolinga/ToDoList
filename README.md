@@ -24,8 +24,6 @@
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -147,7 +145,6 @@ npx eslint .
 - Twitter: [@AndreaRivasPal](https://twitter.com/AndreaRivasPal)
 
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
@@ -155,9 +152,9 @@ npx eslint .
 ## 🔭 Future Features <a name="future-features"></a>
 
 
-- [ ] **[Dragging tasks]**
-- [ ] **[Message when you add succesfull a task]**
-- [ ] **[Better design]**
+- [ ] **Dragging tasks**
+- [ ] **Message when you add succesfull a task**
+- [ ] **Better design**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
