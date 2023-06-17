@@ -36,8 +36,6 @@
 
 # 📖 To Do List <a name="about-project"></a>
 
-
-
 **To Do List** is a simple application that lists the tasks that you need to do. Create, prioritize, and track tasks effortlessly with our intuitive to-do list manager. Stay organized and accomplish more with ease!
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -153,7 +151,7 @@ npx eslint .
 
 
 - [ ] **Dragging tasks**
-- [ ] **Message when you add succesfull a task**
+- [ ] **Message when you add successfully a task**
 - [ ] **Better design**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
