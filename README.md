@@ -36,11 +36,11 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [To Do List] <a name="about-project"></a>
+# 📖 To Do List <a name="about-project"></a>
 
 
 
-**[To Do lost]** is a simple application that lists the tasks that you need to do. Allows you to mark them as complete. 
+**To Do List** is a simple application that lists the tasks that you need to do. Create, prioritize, and track tasks effortlessly with our intuitive to-do list manager. Stay organized and accomplish more with ease!
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -52,9 +52,7 @@
 <!-- Features -->
 ### Key Features <a name="key-features"></a>
 
-<!-- > Describe between 1-3 key features of the application.-->
 
-- **Use ob webpack and ES6 sintax**
 - **Add and remove new task**
 - **Mark tasks completed**
 - **Change task description**
